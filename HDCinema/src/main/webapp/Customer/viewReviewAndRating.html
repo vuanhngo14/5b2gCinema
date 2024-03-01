@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>View Review And Rating</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- swiper link -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+
+        <!-- font awesome cdn link -->	
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+        <!-- boxIcon cdn link -->
+        <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+
+        <link rel="stylesheet" href="./viewRR.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    </head>
+
+    <header>
+
+      <a class="logo" href="./systemAdminDashboard.html"><img src="./logo.jpg" alt="Logo"></a>
+
+      <nav class="navbar">
+                  <a class="#home" href="custHome.html">Home</a>
+        <a class="active" id="#ticket" href="custMovie.html">Ticket Management</a>
+        <a class="#order" href="custOrder.html">Order Management</a>
+        <a class="#redeem" href="custRedeem.html">Redeem Rewards</a>
+      </nav>
+  
+      <div class="icons">
+        <i class="fas fa-bars" id="menu-bars"></i>
+         <a href="../logout.html" class="bx bx-lock-open"></a> <!--logout button-->
+     
+    </div>
+  </header>
+    <body>
+        
+        <div class="userTable">
+            <input type="text" id="myInput" disabled>
+            <table id="myTable2">
+                <thead>
+                  <tr class="header">
+                    <th style="width:20%;">Movie ID</th>
+                    <th style="width:20%;">Movie Name</th>
+                  </tr>
+                </thead>
+                <tbody id="tableBody2">
+                  <!-- The table body will be populated dynamically -->
+                </tbody>
+            </table>
+            <table id="myTable">
+                <thead>
+                  <tr class="header">
+                    <th style="width:20%;">Movie ID</th>
+                    <th style="width:20%;">Rating</th>
+                    <th style="width:20%;">Review</th>
+                  </tr>
+                </thead>
+                <tbody id="tableBody">
+                  <!-- The table body will be populated dynamically -->
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>
+
+
+  <!-- swiper js link -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+  <!-- js file link -->
+  <script src="./viewRR.js"></script>

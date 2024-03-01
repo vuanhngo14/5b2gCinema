@@ -1,0 +1,10 @@
+CR01, Luxury
+CR02, Standard
+CR03, Beanie
+CR04, 4D
+CR05, Imax
+CR06, 3D
+CR07, Luxury
+CR08, Standard
+CR09, Standard
+CR002, super luxury

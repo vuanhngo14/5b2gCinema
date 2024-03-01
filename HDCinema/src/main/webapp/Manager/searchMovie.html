@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+
+<!-- Specify the language of the content as English -->
+<html lang="en">
+
+    <head>
+
+        <!-- Specify the character encoding by using the charset attribute -->
+        <!-- Set the viewport to scale the website on all devices with fitting dimensions -->
+        <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Search Movie</title>
+
+        <!-- Google jQuery library-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        
+        <!-- Swiper link -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+
+        <!-- Font awesome cdn link -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+        <!-- BoxIcon cdn link -->
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+        <!-- Css file link -->
+        <link rel="stylesheet" href="./styles/fnbInfo.css">
+        
+        <style>
+        	section {padding-top:12rem;}
+        </style>
+
+    </head>
+
+    <body>
+
+         <!-- Header section starts -->
+         <header>
+            <a href="#" class="logo"><i class="fas-fa-untensils"></i>5B2G Cinema</a>
+
+            <nav class="navbar">
+                <a class="active" href="movies.html">Movies</a></li>
+                <a class="fnb" href="fnb.html">Food & Baverage</a></li>
+                <a class="CR" href="cinemaRoom.html">Cinema Rooms</a></li>
+                <a class="report" href="report.html">Generate Reports</a></li>
+            </nav>
+
+            <div class="icons">
+                <i class="fas fa-bars" id="menu-bars"></i>
+                <a href="../logout.html" class="bx bx-lock-open"></a>
+            </div>
+
+        </header>
+        <!-- Header section ends -->
+
+        <!-- Fnb info starts -->
+        <section>
+
+            <h1 id="names"></h1>
+
+            <div id="fnbDetails">
+            <form>
+               	<input type="text" id="searchNumber" placeholder="Enter name and press button to search" onkeypress="handleKeyPress(event)">
+            
+            </form>
+           <span id="movieId"></span>
+                <div>            
+                    <h3 class="detailTitle">Details</h3>
+                    <div id="detailsTable">
+                        <table border="0" class="details">
+                        <tr>
+                                <th>Name:</th>
+                                <th class="details" id="name"></th>
+                            </tr>
+                            <tr>
+                                <th>Cast:</th>
+                                <th class="details" id="cast"></th>
+                            </tr>
+                            <tr>
+                                <th>Director:</th>
+                                <th class="details" id="director"></th>
+                            </tr>
+                            <tr>
+                                <th>Genre:</th>
+                                <th class="details" id="movieGenre"></th>
+                            </tr>
+
+                            <tr>
+                                <th>Rating:</th>
+                                <th class="details" id="avgRating"></th>
+                            </tr>
+                            <tr>
+                                <th>Release:</th>
+                                <th class="details" id="releaseDate"></th>
+                            </tr>
+                            <tr>
+                                <th>Running Time:</th>
+                                <th class="details" id="duration"></th>
+                            </tr>
+                            <tr>
+                                <th>Language:</th>
+                                <th class="details" id="language"></th>
+                            </tr>
+                            <tr>
+                                <th>Parental Guidance Rating:</th>
+                                <th class="details" id="PGRating"></th>
+                            </tr>
+                        </table>
+                    </div>
+                    <h3 class="detailTitle">Synopsis</h3>
+                    <p class="details" id="synopsis"></p>
+                </div>
+            </div>
+        </section>
+        <!-- Fnb info ends -->
+
+        <!-- Buttons starts -->
+        <div id="btn">
+            <a href="updateMovie.html"><button id="editBtn">Edit Movie</button></a>
+            <button id="deleteBtn">Delete Movie</button>
+        </div>
+        <!-- Button ends -->
+
+        <script src="noSearchBar.js"></script>
+
+        <script> 
+            
+            
+            function handleKeyPress(event) {
+            	  if (event.key === 'Enter') {
+            		  console.log("enter pressed");
+            	    event.preventDefault(); // Prevent form submission or other default behavior
+            	    var Snumber = document.getElementById("searchNumber").value;
+            	    console.log(Snumber);
+            	     $.ajax({
+            	        url: "../searchMovie",
+            	        type: "POST",
+            	        data: {movieName: Snumber},
+            	        "dataType": "json",
+            	        complete : (data) => {
+            				if(data.responseJSON == null){
+            					alert("No data found");
+            				}else{
+            					var Movie = data.responseJSON;
+            					document.getElementById('movieId').value = Movie.movieID;
+            					document.getElementById('PGRating').innerText = Movie.PGRating;
+            					document.getElementById('name').innerText = Movie.movieName;
+            	                document.getElementById('movieGenre').innerText = Movie.movieGenre;
+            	                document.getElementById('releaseDate').innerText = Movie.releaseDate;
+            	                document.getElementById('language').innerText = Movie.language;
+            	                document.getElementById('cast').innerText = Movie.cast;
+            	                document.getElementById('director').innerText = Movie.director;
+            	                document.getElementById('synopsis').innerText = Movie.synopsis;
+            	                document.getElementById('duration').innerText = Movie.duration;
+            	                document.getElementById('avgRating').innerText = Movie.avgRating;
+            				}
+            		    },
+            		    error: function(error) {
+            	            console.log("Error fetching user details: " + error);
+            	        }
+           		    });
+            	  }
+            	}
+            
+            $(document).ready(function() {
+            	  $('#deleteBtn').click(function() {
+            		  var Mid =  document.getElementById('movieId').value;
+            		if(Mid == "MV001" || Mid == "MV002"  || Mid == "MV003" ||Mid == "MV004"  ||Mid == "MV005"  ||Mid == "MV006"  ||Mid == "MV007"  ||Mid == "MV008"  ||Mid == "MV009" ||Mid == "MV0010" ){
+            			alert("This item cannot be deleted as they are permanent servings!");
+            			return false;
+            		}
+            		
+            		
+
+            	    $.ajax({
+            	      url: '../deleteMovie', // Replace with the URL of your Java function
+            	      method: 'POST', // Use POST or GET depending on your requirements
+            	      data: { movieID: Mid },
+            	      success: function(response) {
+            	        // Handle the response from the server after deletion
+            	        var result=response;
+            	        if(result){
+            	        	window.location.href = "./movies.html";
+            	        }else{
+            	        	alert("Fail to delete");
+            	        }
+            	      },
+            	      error: function(xhr, status, error) {
+            	        // Handle error
+            	        console.log(error);
+            	      }
+            	    });
+            	  });
+            	});
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>HDCinema</display-name>
+ 
+  
+  <servlet>
+    <servlet-name>SystemAdminCreateAccount</servlet-name>
+    <servlet-class>fiveBtwoG.SystemAdmin.CreateAccount</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>SystemAdminCreateAccount</servlet-name>
+    <url-pattern>/createAcc</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>SystemAdminCreateProfile</servlet-name>
+    <servlet-class>fiveBtwoG.SystemAdmin.CreateProfile</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>SystemAdminCreateProfile</servlet-name>
+    <url-pattern>/createProf</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>SystemAdminViewAccount</servlet-name>
+    <servlet-class>fiveBtwoG.SystemAdmin.ViewAccount</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>SystemAdminViewAccount</servlet-name>
+    <url-pattern>/viewAcc</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>SystemAdminUpdateAccount</servlet-name>
+    <servlet-class>fiveBtwoG.SystemAdmin.UpdateAccount</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>SystemAdminUpdateAccount</servlet-name>
+    <url-pattern>/updateAcc</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>SystemAdminSuspendAccount</servlet-name>
+    <servlet-class>fiveBtwoG.SystemAdmin.SuspendAccount</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>SystemAdminSuspendAccount</servlet-name>
+    <url-pattern>/suspendAcc</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>SystemAdminSearchAccount</servlet-name>
+    <servlet-class>fiveBtwoG.SystemAdmin.SearchAccount</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>SystemAdminSearchAccount</servlet-name>
+    <url-pattern>/searchAcc</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>SystemAdminViewProfile</servlet-name>
+    <servlet-class>fiveBtwoG.SystemAdmin.ViewProfile</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>SystemAdminViewProfile</servlet-name>
+    <url-pattern>/viewProf</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>SystemAdminUpdateProfile</servlet-name>
+    <servlet-class>fiveBtwoG.SystemAdmin.UpdateProfile</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>SystemAdminUpdateProfile</servlet-name>
+    <url-pattern>/updateProf</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>SystemAdminSuspendProfile</servlet-name>
+    <servlet-class>fiveBtwoG.SystemAdmin.SuspendProfile</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>SystemAdminSuspendProfile</servlet-name>
+    <url-pattern>/suspendProf</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>SystemAdminSearchProfile</servlet-name>
+    <servlet-class>fiveBtwoG.SystemAdmin.SearchProfile</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>SystemAdminSearchProfile</servlet-name>
+    <url-pattern>/searchProf</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>AdminLogin</servlet-name>
+    <servlet-class>fiveBtwoG.SystemAdmin.LoginAccountAdmin</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>AdminLogin</servlet-name>
+    <url-pattern>/loginAdmin</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>AdminLogout</servlet-name>
+    <servlet-class>fiveBtwoG.SystemAdmin.LogoutAccountAdmin</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>AdminLogout</servlet-name>
+    <url-pattern>/logoutAdmin</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>CustomerLogin</servlet-name>
+    <servlet-class>fiveBtwoG.Customer.LoginAccountCustomer</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>CustomerLogin</servlet-name>
+    <url-pattern>/loginCust</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>CustomerLogout</servlet-name>
+    <servlet-class>fiveBtwoG.Customer.LogoutAccountCustomer</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>CustomerLogout</servlet-name>
+    <url-pattern>/logoutCust</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>StaffLogin</servlet-name>
+    <servlet-class>fiveBtwoG.Staff.LoginAccountStaff</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>StaffLogin</servlet-name>
+    <url-pattern>/loginStaff</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>StaffLogout</servlet-name>
+    <servlet-class>fiveBtwoG.Staff.LogoutAccountStaff</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>StaffLogout</servlet-name>
+    <url-pattern>/logoutStaff</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ManagerLogin</servlet-name>
+    <servlet-class>fiveBtwoG.Manager.LoginAccountManager</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>ManagerLogin</servlet-name>
+    <url-pattern>/loginMan</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ManagerLogout</servlet-name>
+    <servlet-class>fiveBtwoG.Manager.LogoutAccountManager</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>ManagerLogout</servlet-name>
+    <url-pattern>/logoutMan</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>AdminGetProfileList</servlet-name>
+    <servlet-class>fiveBtwoG.SystemAdmin.GetProfileList</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>AdminGetProfileList</servlet-name>
+    <url-pattern>/getProfileList</url-pattern>
+  </servlet-mapping>
+  
+  
+  
+  <servlet>
+    <servlet-name>ManagerViewMovie</servlet-name>
+    <servlet-class>fiveBtwoG.Manager.ManagerViewMovie</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>ManagerViewMovie</servlet-name>
+    <url-pattern>/viewMovie</url-pattern>
+  </servlet-mapping>
+  
+    <servlet>
+    <servlet-name>ManagerDeleteFoodDrink</servlet-name>
+    <servlet-class>fiveBtwoG.Manager.ManagerDeleteFoodDrink</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>ManagerDeleteFoodDrink</servlet-name>
+    <url-pattern>/deleteFoodDrink</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+ <servlet-name>CustomerSubmitReviews</servlet-name>
+ <servlet-class>fiveBtwoG.Customer.CustomerSubmitReviews</servlet-class>
+</servlet>
+<servlet-mapping>
+	<servlet-name>CustomerSubmitReviews</servlet-name>
+	<url-pattern>/submitReview</url-pattern>
+</servlet-mapping>
+
+
+<servlet>
+ <servlet-name>CustomerRedeemReward</servlet-name>
+ <servlet-class>fiveBtwoG.Customer.CustomerRedeemReward</servlet-class>
+</servlet>
+<servlet-mapping>
+	<servlet-name>CustomerRedeemReward</servlet-name>
+	<url-pattern>/redeemLoyaltyPoint</url-pattern>
+</servlet-mapping>
+
+</web-app>

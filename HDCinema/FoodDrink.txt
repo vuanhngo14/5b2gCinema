@@ -1,0 +1,13 @@
+F001|Buttered Popcorn|medium|Buttered popcorn is a classic, savory snack with a rich and creamy butter coating that enhances the flavor of each kernel.|10.0|Food
+F002|Sweet Popcorn|medium|Sweet popcorn is a delightful treat that combines the light and crispy texture of popcorn with a delectable sweetness, creating a delicious snack that satisfies your cravings for a sugary indulgence.|10.0|Food
+F003|Caramel Popcorn|medium|Caramel popcorn is a delectable treat that takes freshly popped popcorn and coats it in a rich and sticky caramel sauce, creating a perfect balance between the crunchiness of the popcorn and the sweet, buttery caramel, resulting in a truly irresistible snack.|10.0|Food
+F004|Hot dogs|standard medium|Hot dogs are a beloved classic in the world of fast food, consisting of a juicy, grilled or steamed sausage nestled within a soft bun, offering a delightful combination of flavors and textures that satisfy your cravings with every bite.|3.0|Food
+F005|Ice cream|small|Ice cream is a delightful frozen dessert that brings pure joy with its smooth and creamy texture, combined with a variety of delectable flavors, making it a beloved treat that brings a refreshing and indulgent experience with every scoop.|3.0|Food
+F006|Potato Chips|medium|Potato chips are a crispy and addictive snack made from thinly sliced potatoes, fried or baked to perfection, resulting in a satisfying crunch that releases a burst of savory flavor, making them a popular go-to snack for moments of crispy enjoyment.|2.0|Food
+D001|Coca-cola|medium|Coca-Cola is a popular, fizzy beverage known for its refreshing taste and worldwide appeal.|1.5|Drink
+D002|Pepsi|medium|Pepsi is a popular cola drink with a bold flavor.|1.2|Drink
+D003|Sprite|medium|Sprite is a zesty and refreshing lemon-lime soda.|1.2|Drink
+D004|7-up|medium|Seven Up is a popular, citrusy soda that refreshes with every sip.|1.2|Drink
+D005|Orange-Juice|medium|this is lemon tea|50.0|Food
+D006|IcelemonTea|medium|this is lemon tea|50.0|Food
+FD009|Pomelo|Medium|Testing Purpose|15.0|Food

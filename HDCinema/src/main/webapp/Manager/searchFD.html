@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+
+<!-- Specify the language of the content as English -->
+<html lang="en">
+
+    <head>
+
+        <!-- Specify the character encoding by using the charset attribute -->
+        <!-- Set the viewport to scale the website on all devices with fitting dimensions -->
+        <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Search Food and Drink</title>
+
+        <!-- Google jQuery library-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        
+        <!-- Swiper link -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+
+        <!-- Font awesome cdn link -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+        <!-- BoxIcon cdn link -->
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+        <!-- Css file link -->
+        <link rel="stylesheet" href="./styles/fnbInfo.css">
+
+        <style>
+        	section {padding-top:12rem;}
+        </style>
+        
+    </head>
+
+    <body>
+
+         <!-- Header section starts -->
+         <header>
+            <a href="#" class="logo"><i class="fas-fa-untensils"></i>5B2G Cinema</a>
+
+            <nav class="navbar">
+                <a class="movie" href="movies.html">Movies</a></li>
+                <a class="active" href="fnb.html">Food & Baverage</a></li>
+                <a class="CR" href="cinemaRoom.html">Cinema Rooms</a></li>
+                <a class="report" href="report.html">Generate Reports</a></li>
+            </nav>
+
+            <div class="icons">
+                <i class="fas fa-bars" id="menu-bars"></i>
+                <a href="../logout.html" class="bx bx-lock-open"></a>
+            </div>
+
+        </header>
+        <!-- Header section ends -->
+
+        <!-- Fnb info starts -->
+        <section>
+
+            <h1 id="names"></h1>
+
+            <div id="fnbDetails">
+            
+            <form>
+            	<input type="text" id="searchName" placeholder="Enter name and press button to search" onkeypress="handleKeyPress(event)" width="48" height="48">
+            </form>
+                <div>            
+                    <h3 class="detailTitle">Details</h3>
+                    <div id="detailsTable">
+                        <table border="0" class="details">
+                            <tr>
+                                <th>Name:</th>
+                                <th class="details" id="name"></th>
+                            </tr>
+                            <tr>
+                                <th>ID:</th>
+                                <th class="details" id="FDid"></th>
+                            </tr>
+                            <tr>
+                                <th>Price:</th>
+                                <th class="details" id="price"></th>
+                            </tr>
+                            <tr>
+                                <th>Size:</th>
+                                <th class="details" id="size"></th>
+                            </tr>
+                        </table>
+                    </div>
+                    <h3 class="detailTitle">Description</h3>
+                    <p class="details" id="description"></p>
+                </div>
+            </div>
+        </section>
+        <!-- Fnb info ends -->
+
+        <!-- Buttons starts -->
+        <div id="btn">
+            <a href="updateFnb.html"><button id="editBtn">Edit Food</button></a>
+            <button id="deleteBtn">Delete Food</button>
+        </div>
+        <!-- Button ends -->
+
+        <script src="noSearchBar.js"></script>
+
+        <script>
+        var urlParams = new URLSearchParams(window.location.search);
+		const name = urlParams.get('name');
+		console.log(name);
+            // Function to fetch user details based on the userId
+ 
+            
+            
+            function handleKeyPress(event) {
+            	  if (event.key === 'Enter') {
+            		  console.log("enter pressed");
+            	    event.preventDefault(); // Prevent form submission or other default behavior
+            	    var Sname = document.getElementById("searchName").value;
+            	    console.log(Sname);
+            	     $.ajax({
+            	        url: "../searchFoodDrink",
+            	        type: "POST",
+            	        data: {name: Sname},
+            	        "dataType": "json",
+            	        complete : (data) => {
+            				if(data.responseJSON == null){
+            					alert("No data found");
+            				}else{
+            					var FoodDrink = data.responseJSON;
+            					 document.getElementById('name').innerText = FoodDrink.name;
+            		                document.getElementById('FDid').innerText = FoodDrink.itemID;
+            		                document.getElementById('FDid').value = FoodDrink.itemID;
+            		                document.getElementById('size').innerText = FoodDrink.size;
+            		                document.getElementById('description').innerText = FoodDrink.description;
+            		                document.getElementById('price').innerText = "$ " + FoodDrink.price;
+            				}
+            		    },
+            		    error: function(error) {
+            	            console.log("Error fetching user details: " + error);
+            	        }
+            		    });
+            		    console.log("wow");
+            	  }
+            	}
+            
+            $(document).ready(function() {
+            	  $('#deleteBtn').click(function() {
+            		if(name == "Buttered Popcorn" || name == "Sweet Popcorn" || name == "Caramel Popcorn" ||name == "Hot dogs" ||name == "Ice cream" ||name == "Potato Chips" ||name == "Coca-cola" ||name == "Pepsi" ||name == "Sprite" ||name == "7-up" ||name == "Orange-Juice" ||name == "IceLemonTea"){
+            			alert("This item cannot be deleted as they are permanent servings!");
+            			return false;
+            		}
+            		
+            		var FDid =  document.getElementById('FDid').innerText;
+            		
+            	    $.ajax({
+            	      url: '../deleteFoodDrink', // Replace with the URL of your Java function
+            	      method: 'POST', // Use POST or GET depending on your requirements
+            	      data: { itemID: FDid },
+            	      success: function(response) {
+            	        // Handle the response from the server after deletion
+            	        var result=response;
+            	        if(result){
+            	        	window.location.href = "./fnb.html";
+            	        }else{
+            	        	alert("Fail to delete");
+            	        }
+            	      },
+            	      error: function(xhr, status, error) {
+            	        // Handle error
+            	        console.log(error);
+            	      }
+            	    });
+            	  });
+            	});
+
+        </script>
+    </body>
+</html>

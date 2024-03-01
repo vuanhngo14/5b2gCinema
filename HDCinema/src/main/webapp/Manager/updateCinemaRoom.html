@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+
+<!-- Specify the language of the content as English -->
+<html lang="en">
+
+    <head>
+
+        <!-- Specify the character encoding by using the charset attribute -->
+        <!-- Set the viewport to scale the website on all devices with fitting dimensions -->
+        <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>ManagerAddMovies</title>
+
+		<!-- Google jQuery library-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        
+        <!-- Swiper link -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+
+        <!-- Font awesome cdn link -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+        <!-- BoxIcon cdn link -->
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+        <!-- Css file link -->
+        <link rel="stylesheet" href="./styles/addCinemaRoom.css">
+
+    </head>
+
+    <body>
+
+         <!-- Header section starts -->
+         <header>
+            <a href="#" class="logo"><i class="fas-fa-untensils"></i>5B2G Cinema</a>
+
+            <nav class="navbar">
+                <a class="movie" href="movies.html">Movies</a></li>
+                <a class="fnb" href="fnb.html">Food & Baverage</a></li>
+                <a class="active" href="cinemaRoom.html">Cinema Rooms</a></li>
+                <a class="report" href="report.html">Generate Reports</a></li>
+            </nav>
+
+            <div class="icons">
+                <i class="fas fa-bars" id="menu-bars"></i>
+                <a href="../logout.html" class="bx bx-lock-open"></a>
+            </div>
+        </header>
+        <!-- header section ends -->
+
+        <!-- CR info starts -->
+        <section>
+
+            <h1 id="addCRTitle">Update Cinema Room</h1><hr/>
+			<form action="createCinemaRoom" method="post">
+            <div id="tablediv">
+                <table id="infoTable">
+                    <tr>
+                        <th><label for="cinemaRoomNum">Room Number:</label></th>
+                        <th><input type="text" id="cinemaRoomNum" name="cinemaRoomNum"></th>
+                    </tr>
+
+                    <tr>
+                        <th><label for="cinemaRoomType">Room Type:</label></th>
+                        <th><input type="text" id="cinemaRoomType" name="cinemaRoomType"></th>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="btn">
+                <button id="confirmBtn">Confirm</button>
+                <button id="cancelBtn" onclick="goBack()">Cancel</button>
+            </div>
+            </form>
+        </section>
+        <!-- CR info starts -->
+
+        <script src="noSearchBar.js"></script>
+        <script>
+            $(document).ready(function() {
+                $("#confirmBtn").click(function() {
+                    $.ajax({
+                        url: "../updateCinemaRoom",
+                        type: "POST",
+                        data: { 
+                        	cinemaRoomNum: $("#cinemaRoomNum").val(),
+                            cinemaRoomType: $("#cinemaRoomType").val()
+                        },
+                        success: function(response){
+                        	window.location.href = "./cinemaRoom.html";
+                        }
+                    });
+                });
+            });
+
+        </script>
+    </body>
+</html>

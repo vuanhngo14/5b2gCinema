@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+
+<!-- Specify the language of the content as English -->
+<html lang="en">
+
+    <head>
+        <!-- Specify the character encoding by using the charset attribute -->
+        <!-- Set the viewport to scale the website on all devices with fitting dimensions -->
+        <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>ManagerReportManagement</title>
+
+        <!-- Google jQuery library-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        
+
+        <!-- swiper link -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+
+        <!-- Font awesome cdn link -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+        <!-- BoxIcon cdn link -->
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+        <!-- Css file link -->
+        <link rel="stylesheet" href="./styles/report.css">    
+        
+    </head>
+
+    <body>
+
+        <!-- Header section starts -->
+        <header>
+            <a href="#" class="logo"><i class="fas-fa-untensils"></i>5B2G Cinema</a>
+
+            <nav class="navbar">
+                <a class="movie" href="movies.html">Movies</a>
+                <a class="fnb" href="fnb.html">Food & Baverage</a>
+                <a class="CR" href="cinemaRoom.html">Cinema Rooms</a>
+                <a class="active" href="report.html">Generate Reports</a>
+            </nav>
+
+            <div class="icons">
+                <i class="fas fa-bars" id="menu-bars"></i>
+                <i class="fas fa-search" id="search-icon"></i> 
+                <a href="../logout.html" class="bx bx-lock-open"></a>
+            </div>
+        </header>
+        <!-- Header section ends --> 
+
+        <!-- Generate report starts -->
+        <form>
+	        <div id="reportdiv">
+	            <select id="month" >
+	                <option value="January">January</option>
+	                <option value="February">February</option>
+	                <option value="March">March</option>
+	                <option value="April">April</option>
+	                <option value="May">May</option>
+	                <option value="June">June</option>
+	                <option value="July">July</option>
+	                <option value="August">August</option>
+	                <option value="September">September</option>
+	                <option value="October">October</option>
+	                <option value="November">November</option>
+	                <option value="December">December</option>
+	            </select>
+	            <button class="btn" type="button" onclick="submitForm()">Generate Reports</button>
+	        </div>
+        <!-- Generate report starts -->
+
+        <div id="generatedReport">
+            <h3 id="reportTitle">MONTHLY REPORT</h3><hr/>
+            <div id="reportTable">
+                <table border="0">
+                    <tr>
+                        <th class="detailName">Report ID</th>
+                        <th class="details" id="reportID"></th>
+                    </tr>
+                    <tr>
+                        <th class="detailName">Date generated&nbsp</th>
+                        <th class="details" id="date"></th>
+                    </tr>
+                    <tr>
+                        <th class="detailName">Total Revenue</th>
+                        <th class="details" id="totalRevenue"></th>
+                    </tr>
+                    <tr>
+                        <th class="detailName">Month selected</th>
+                        <th class="details" id="months"></th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <script src="noSearchBar.js"></script>
+        </form>
+    </body>
+    
+	<script>
+        // Function to fetch input month and generate select month report
+        function fetchUserDetails(month, callback) {
+            // Replace this code with your actual logic to fetch the user details
+            if (typeof callback !== 'function') {
+                console.error('Error: callback is not a function');
+                return;
+            }
+            $.ajax({
+                url: "../genReport",
+                type: "POST",
+                data: {month: month},
+                "dataType": "json",
+                complete : (data) => {
+                    var Report = data.responseJSON;
+                callback(Report);
+            },
+            error: function(error) {
+                    console.log("Error fetching user details: " + error);
+                    callback(null);
+                }
+            });
+        }
+
+
+        function handleUserDetails(Report) {
+
+            // Display the user details on the page
+            document.getElementById('reportID').innerText = Report.reportID;
+            document.getElementById('date').innerText = Report.date;
+            document.getElementById('totalRevenue').innerText = Report.totalRevenue;
+            document.getElementById('months').innerText = Report.month;
+        }
+        
+        function submitForm(){
+        	var month = document.getElementById('month').value;
+        	fetchUserDetails(month, handleUserDetails);
+        	
+        }
+
+        </script>
+</html>

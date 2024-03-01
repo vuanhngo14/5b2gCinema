@@ -1,0 +1,10 @@
+A101, Ming Ming, SystemAdmin, ming123, 12345678Mm, Available
+A103, Vu Anh, SystemAdmin, va01, va001002, Available
+M001, John Doe, Manager, jd01, jd001M, Available
+M002, Chirstine Mary, Manager, cm01, cm002M, Available
+S001, Henry Alvin, Staff, ha01, ha001S, Available
+S002, Larry Loh, Staff, ll01, ll001S, Available
+C001, Benjamin Ho, Customer, bh01, bh001C, Available
+C002, Niel Wang, Customer, nw01, nw001C, Available
+A102, Nelson Ho, SystemAdmin, nh01, nh001A, Available
+A109, Daniel Tan, Staff, dt01, dt001M, Available

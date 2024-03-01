@@ -1,0 +1,10 @@
+A003|A002|not bad|3.0
+A004|A001|besttt|5.0
+A003|A003|good|2.0
+C001|A008|good|5.0
+C001|A003|goood|2.0
+C001|A003|gooooood|5.0
+C001|A002|Oh Wow good movie|3.0
+C001|A001|Wow Wo wowww|4.0
+C001|A002|ssssss|5.0
+C001|A003|goood|2.0

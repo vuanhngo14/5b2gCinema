@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+
+<!-- Specify the language of the content as English -->
+<html lang="en">
+
+    <head>
+
+        <!-- Specify the character encoding by using the charset attribute -->
+        <!-- Set the viewport to scale the website on all devices with fitting dimensions -->
+        <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>ManagerAddCR</title>
+
+        <!-- Swiper link -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+
+        <!-- Font awesome cdn link -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+        <!-- BoxIcon cdn link -->
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+        <!-- Css file link -->
+        <link rel="stylesheet" href="./styles/cinemaRoomInfo.css">
+        
+         <!-- Google jQuery library-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    </head>
+
+    <body>
+
+        <!-- Header section starts -->
+        <header>
+            <a href="#" class="logo"><i class="fas-fa-untensils"></i>5B2G Cinema</a>
+
+            <nav class="navbar">
+                <a class="movie" href="movies.html">Movies</a></li>
+                <a class="fnb" href="fnb.html">Food & Baverage</a></li>
+                <a class="active" href="cinemaRoom.html">Cinema Rooms</a></li>
+                <a class="report" href="report.html">Generate Reports</a></li>
+            </nav>
+
+            <div class="icons">
+                <i class="fas fa-bars" id="menu-bars"></i>
+                <a href="../logout.html" class="bx bx-lock-open"></a>
+            </div>
+        </header>
+        <!-- Header section ends -->
+
+        <!-- CR info starts -->
+        <section>
+            <h1 id="CRName">Cinema Room</h1><hr/>
+
+            <div id="CRDetails">
+
+
+                <div>            
+                    <h3 class="detailTitle">Details</h3>
+                    <div id="detailsTable"></div>
+                        <table border="0" class="details">
+                           <tr>
+                                <th>Type:</th>
+                                <th class="details" id="cinemaRoomType"></th>
+                            </tr>
+                            <tr>
+                                <th>Room Number:</th>
+                                <th class="details" id="cinemaRoomNum"></th>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+        <!-- CR info ends -->
+
+        <div id="btn">
+            <a href="updateCinemaRoom.html"><button id="confirmBtn">Edit Cinema Room</button></a>
+            <button id="deleteBtn">Delete Cinema Room</button>
+        </div>
+        <script src="noSearchBar.js"></script>
+        
+        <script>
+        var urlParams = new URLSearchParams(window.location.search);
+		const roomNum = urlParams.get('roomNum');
+            // Function to fetch user details based on the userId
+            function fetchUserDetails(roomNum, callback) {
+                // Replace this code with your actual logic to fetch the user details
+                if (typeof callback !== 'function') {
+                    console.error('Error: callback is not a function');
+                    return;
+                }
+                $.ajax({
+                    url: "../viewCinemaRoom",
+                    type: "POST",
+                    data: {cinemaRoomNum: roomNum},
+                    dataType: "json",
+                    complete : (data) => {
+                        var CinemaRoom = data.responseJSON;
+                        console.log(CinemaRoom);
+                    callback(CinemaRoom);
+                },
+                error: function(error) {
+                        console.log("Error fetching user details: " + error);
+                        callback(null);
+                    }
+                });
+            }
+
+            // Retrieve user details from URL parameters
+  
+
+            function handleUserDetails(CinemaRoom) {
+
+            	document.getElementById('cinemaRoomNum').innerText = CinemaRoom.cinemaRoomNum;
+                document.getElementById('cinemaRoomType').innerText = CinemaRoom.cinemaRoomType;
+            }
+
+            fetchUserDetails(roomNum, handleUserDetails);
+            
+            $(document).ready(function() {
+          	  $('#deleteBtn').click(function() {
+          		  
+          		var CRid =  document.getElementById('cinemaRoomNum').innerText;
+          		if(CRid == "CR01" || CRid == "CR02" || CRid == "CR03" ||CRid == "CR04" ||CRid == "CR05"||CRid == "CR06" ||CRid == "CR07"||CRid == "CR08"){
+          			alert("This item cannot be deleted as they are permanent servings!");
+          			return false;
+          		}
+          		
+          		
+          		
+          	    $.ajax({
+          	      url: '../deleteCinemaRoom', // Replace with the URL of your Java function
+          	      method: 'POST', // Use POST or GET depending on your requirements
+          	      data: { cinemaRoomNum: CRid },
+          	      success: function(response) {
+          	        // Handle the response from the server after deletion
+          	        var result=response;
+          	        if(result){
+          	        	window.location.href = "./cinemaRoom.html";
+          	        }else{
+          	        	alert("Fail to delete");
+          	        }
+          	      },
+          	      error: function(xhr, status, error) {
+          	        // Handle error
+          	        console.log(error);
+          	      }
+          	    });
+          	  });
+          	});
+        </script>
+    </body>
+</html>

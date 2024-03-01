@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+
+<!-- Specify the language of the content as English -->
+<html lang="en">
+
+    <head>
+
+        <!-- Specify the character encoding by using the charset attribute -->
+        <!-- Set the viewport to scale the website on all devices with fitting dimensions -->
+        <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Search Cinema Room</title>
+
+        <!-- Google jQuery library-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        
+        <!-- Swiper link -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+
+        <!-- Font awesome cdn link -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+        <!-- BoxIcon cdn link -->
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+        <!-- Css file link -->
+        <link rel="stylesheet" href="./styles/fnbInfo.css">
+        
+        <style>
+        	section {padding-top:12rem;}
+        </style>
+
+    </head>
+
+    <body>
+
+         <!-- Header section starts -->
+         <header>
+            <a href="#" class="logo"><i class="fas-fa-untensils"></i>5B2G Cinema</a>
+
+            <nav class="navbar">
+                <a class="movie" href="movies.html">Movies</a></li>
+                <a class="fnb" href="fnb.html">Food & Baverage</a></li>
+                <a class="active" href="cinemaRoom.html">Cinema Rooms</a></li>
+                <a class="report" href="report.html">Generate Reports</a></li>
+            </nav>
+
+            <div class="icons">
+                <i class="fas fa-bars" id="menu-bars"></i>
+                <a href="../logout.html" class="bx bx-lock-open"></a>
+            </div>
+
+        </header>
+        <!-- Header section ends -->
+
+        <!-- Fnb info starts -->
+        <section>
+
+            <h1 id="names"></h1>
+
+            <div id="fnbDetails">
+            <form>
+                             	<input type="text" id="searchNumber" placeholder="Enter name and press button to search" onkeypress="handleKeyPress(event)">
+            
+            </form>
+           
+                <div>            
+                    <h3 class="detailTitle">Details</h3>
+                    <div id="detailsTable">
+                        <table border="0" class="details">
+                            <tr>
+                                <th>Type:</th>
+                                <th class="details" id="cinemaRoomType"></th>
+                            </tr>
+                            <tr>
+                                <th>Room Number:</th>
+                                <th class="details" id="cinemaRoomNum"></th>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Fnb info ends -->
+
+        <!-- Buttons starts -->
+        <div id="btn">
+            <a href="updateCinemaRoom.html"><button id="editBtn">Edit Cinema Room</button></a>
+            <button id="deleteBtn">Delete Cinema Room</button>
+        </div>
+        <!-- Button ends -->
+
+        <script src="noSearchBar.js"></script>
+
+        <script> 
+            
+            
+            function handleKeyPress(event) {
+            	  if (event.key === 'Enter') {
+            		  console.log("enter pressed");
+            	    event.preventDefault(); // Prevent form submission or other default behavior
+            	    var Snumber = document.getElementById("searchNumber").value;
+            	     $.ajax({
+            	        url: "../searchCinemaRoom",
+            	        type: "POST",
+            	        data: {cinemaRoomNum: Snumber},
+            	        "dataType": "json",
+            	        complete : (data) => {
+            				if(data.responseJSON == null){
+            					alert("No data found");
+            				}else{
+            					var CinemaRoom = data.responseJSON;
+            					 document.getElementById('cinemaRoomNum').innerText = CinemaRoom.cinemaRoomNum;
+            		                document.getElementById('cinemaRoomType').innerText = CinemaRoom.cinemaRoomType;
+            				}
+            		    },
+            		    error: function(error) {
+            	            console.log("Error fetching user details: " + error);
+            	        }
+            		    });
+            	  }
+            	}
+            
+            $(document).ready(function() {
+            	  $('#deleteBtn').click(function() {
+            		  var CRid =  document.getElementById('cinemaRoomNum').innerText;
+                		if(CRid == "CR01" || CRid == "CR02" || CRid == "CR03" ||CRid == "CR04" ||CRid == "CR05"||CRid == "CR06" ||CRid == "CR07"||CRid == "CR08"){
+            			alert("This item cannot be deleted as they are permanent servings!");
+            			return false;
+            		}
+            		
+            		
+            		
+            	    $.ajax({
+            	      url: '../deleteCinemaRoom', // Replace with the URL of your Java function
+            	      method: 'POST', // Use POST or GET depending on your requirements
+            	      data: { cinemaRoomNum: CRid },
+            	      success: function(response) {
+            	        // Handle the response from the server after deletion
+            	        var result=response;
+            	        if(result){
+            	        	window.location.href = "./cinemaRoom.html";
+            	        }else{
+            	        	alert("Fail to delete");
+            	        }
+            	      },
+            	      error: function(xhr, status, error) {
+            	        // Handle error
+            	        console.log(error);
+            	      }
+            	    });
+            	  });
+            	});
+
+        </script>
+    </body>
+</html>

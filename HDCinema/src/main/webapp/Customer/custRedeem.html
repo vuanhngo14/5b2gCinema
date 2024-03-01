@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5B2G Cinema | Order Management</title>
+
+    <!-- font awesome cdn link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- boxIcon cdn link -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- css file link -->
+    <link rel="stylesheet" href="custRedeem.css">
+    
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+
+
+<!-- header section starts -->
+<header>
+    <a href="#" class="logo">5B2G Cinema</a>
+
+    <nav class="navbar">
+        <a class="#home" href="custHome.html">Home</a>
+        <a class="#ticket" href="custMovie.html">Ticket Management</a>
+        <a class="#order" href="custOrder.html">Order Management</a>
+        <a class="active" id="#redeem" href="custRedeem.html">Redeem Rewards</a>
+    </nav>
+
+    <div class="icons">
+        <i class="fas fa-bars" id="menu-bars"></i>
+        <i class="fas fa-search" id="search-icon"></i> 
+        <a href="../logout.html" class="bx bx-lock-open"></a> <!--logout button-->
+    </div>
+</header>
+
+<!-- header section ends -->
+
+<!-- search form start -->
+<form action="" id="search-form">
+    <input type="search" placeholder="Search here..." name="" id="search-box">
+    <label for="search-box" class="fas fa-search"></label>
+    <i class="fas fa-times" id="close"></i>
+</form>
+
+<!-- search form ends  -->
+
+<br>
+<br>
+
+<!-- redeem section starts -->
+<section class="order container">
+    <h2 class="section-title">Redeem Rewards</h2>
+
+    <div class="order-content">
+        <div class="product-box">
+            <img src="images/popcorn3.jpg" alt="" class="product-img">
+            <h2 class="product-title">Free One Of Any Type Of Popcorn</h2>
+            <span class="price">100 points</span>
+        </div>
+
+        <div class="product-box">
+            <img src="images/movieTicket.jpg" alt="" class="product-img">
+            <h2 class="product-title">Free One Ticket For Any Movie</h2>
+            <span class="price">500 points</span>
+        </div>
+
+        <div class="product-box">
+            <img src="images/cola.jpg" alt="" class="product-img">
+            <h2 class="product-title">Free One Of Any Type Of Drinks</h2>
+            <span class="price">50 points</span>
+        </div>
+
+        <div class="product-box">
+            <img src="images/discount.jpg" alt="" class="product-img">
+            <h2 class="product-title">20% Discount</h2>
+            <span class="price">40 points</span>
+        </div>
+
+        <div class="product-box">
+            <img src="images/hotdog.jpg" alt="" class="product-img">
+            <h2 class="product-title">Free One Of Any Type Of Food</h2>
+            <span class="price">70 points</span> 
+        </div>
+
+        <div class="product-box">
+            <img src="images/gift.jpg" alt="" class="product-img">
+            <h2 class="product-title">Movie Merchandise</h2>
+            <span class="price">100 points</span> 
+        </div>
+
+        <div class="product-box">
+            <img src="images/discount2.jpg" alt="" class="product-img">
+            <h2 class="product-title">50% Discount</h2>
+            <span class="price">60 points</span> 
+        </div>
+
+        <div class="product-box">
+            <img src="images/vip.jpg" alt="" class="product-img">
+            <h2 class="product-title">Free VIP Upgrade</h2>
+            <span class="price">1000 points</span> 
+        </div>
+    </div>
+
+    <div class="wrapper">
+        <form>
+            <div class="inputBox">
+            
+            <!--  
+                <div class="input">
+                    <span>Your Account ID</span>
+                    <input id="accId" type="text" placeholder="Enter Your AccID">
+                    
+                </div>
+    		-->
+                <div class="input">
+                    <label> Select a reward:</label>
+                    <select id="choice">
+                        <option value="100">Free One Of Any Type Of Popcorn</option>
+                        <option value="500">Free One Ticket For Any Movie</option>
+                        <option value="50">Free One Of Any Type Of Drinks</option>
+                        <option value="40">20% Discount</option>
+                        <option value="70">Free One Of Any Type Of Food</option>
+                        <option value="100">Movie Merchandise</option>
+                        <option value="60">50% Discount</option>
+                        <option value="1000">Free VIP Upgrade</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+        <button type="button" class="btn1" onclick="submitReview()">Redeem Now</button>
+    </div>
+</section>
+
+<!-- redeem section ends -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- js file link -->
+<script src="custRedeem.js"></script>
+
+</body>
+</html>

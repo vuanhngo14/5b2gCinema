@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+
+<!-- Specify the language of the content as English -->
+<html lang="en">
+
+    <head>
+
+        <!-- Specify the character encoding by using the charset attribute -->
+        <!-- Set the viewport to scale the website on all devices with fitting dimensions -->
+        <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>ManagerAddMovies</title>
+
+		<!-- Google jQuery library-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        
+        <!-- Swiper link -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+
+        <!-- Font awesome cdn link -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+        <!-- BoxIcon cdn link -->
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+        <!-- Css file link -->
+        <link rel="stylesheet" href="./styles/addMovie.css">
+
+    </head>
+
+    <body>
+
+        <!-- header section starts -->
+        <header>
+            <a href="#" class="logo"><i class="fas-fa-untensils"></i>5B2G Cinema</a>
+
+            <nav class="navbar">
+                <a class="active" href="movies.html">Movies</a></li>
+                <a class="fnb" href="fnb.html">Food & Baverage</a></li>
+                <a class="CR" href="cinemaRoom.html">Cinema Rooms</a></li>
+                <a class="report" href="report.html">Generate Reports</a></li>
+            </nav>
+
+            <div class="icons">
+                <i class="fas fa-bars" id="menu-bars"></i>
+                <a href="../logout.html" class="bx bx-lock-open"></a>
+            </div>
+        </header>
+        <!-- header section ends -->
+
+        <!-- Movie info starts -->
+        <section>
+
+            <h1 id="addMovieTitle">New Movie</h1><hr/>
+
+			<form>
+            <div id="tablediv">
+                <table id="infoTable">
+                    
+                    <tr>
+                        <th><label for="movieID">Movie ID:</label></th>
+                        <th><input type="text" id="movieID" name="movieID"></th>
+                    </tr>
+                    
+                    <tr>
+                        <th><label for="movieName">Movie Name:</label></th>
+                        <th><input type="text" id="movieName" name="movieName"></th>
+                    </tr>
+
+                    <tr>
+                        <th><label for="cast">Cast:</label></th>
+                        <th><input type="text" id="cast" name="cast"></th>
+                    </tr>
+
+                    <tr>
+                        <th><label for="director">Director:</label></th>
+                        <th><input type="text" id="director" name="director"></th>
+                    </tr>
+
+                    <tr>
+                        <th><label for="movieGenre">Genre:</label></th>
+                        <th><input type="text" id="movieGenre" name="movieGenre"></th>
+                    </tr>
+
+                    <tr>
+                        <th><label for="avgRating">Rating:</label></th>
+                        <th><input type="text" id="avgRating" name="avgRating"></th>
+                    </tr>
+
+                    <tr>
+                        <th><label for="releaseDate">Release:</label></th>
+                        <th><input type="text" id="releaseDate" name="releaseDate"></th>
+                    </tr>
+
+                    <tr>
+                        <th><label for="duration">Running Time:</label></th>
+                        <th><input type="text" id="duration" name="duration"></th>
+                    </tr>
+
+                    <tr>
+                        <th><label for="language">Language:</label></th>
+                        <th><input type="text" id="language" name="language"></th>
+                    </tr>
+
+                    <tr>
+                        <th><label for="PGRating">Parental Guidance Rating:</label></th>
+                        <th> <input type="text" id="PGRating" name="PGRating"></th>
+                    </tr>
+
+                    <tr>
+                        <th><label for="synopsis">Synopsis:</label></th>
+                        <th><input type="text" id="synopsis" name="synopsis"></th>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="btn">
+                <button id="confirmBtn" type="button">Confirm</button>
+                <a href="./movies.html"><button type="button" id="cancelBtn">Back</button></a>
+            </div>
+			</form>
+        </section>
+        <!-- Movie info ends -->
+
+        <script src="noSearchBar.js"></script>
+        <script>
+            $(document).ready(function() {
+                $("#confirmBtn").click(function() {
+                    $.ajax({
+                        url: "../createMovie",
+                        type: "POST",
+                        data: { 
+                        	movieID: $("#movieID").val(),
+                        	movieName: $("#movieName").val(),
+                        	PGRating: $("#PGRating").val(),
+                        	movieGenre: $("#movieGenre").val(),
+                        	releaseDate: $("#releaseDate").val(),
+                        	language: $("#language").val(),
+                        	cast: $("#cast").val(),
+                        	director: $("#director").val(),
+                        	synopsis: $("#synopsis").val(),
+                        	duration: $("#duration").val(),
+                        	avgRating: $("#avgRating").val()
+                        },
+                        success: function(response){
+                        	window.location.href = "./movies.html";
+                        }
+                    });
+                });
+            });
+
+        </script>
+    </body>
+</html>

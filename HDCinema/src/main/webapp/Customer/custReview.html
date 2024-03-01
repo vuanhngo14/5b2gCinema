@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5B2G Cinema | Review And Comments</title>
+
+    <!-- font awesome cdn link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!--Boxicon cdn link-->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- boxIcon cdn link -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- css file link -->
+    <link rel="stylesheet" href="custReview.css">
+    
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+
+
+<!-- header section starts -->
+<header>
+    <a href="#" class="logo">5B2G Cinema</a>
+
+    <nav class="navbar">
+        <a class="#home" href="custHome.html">Home</a>
+        <a class="active" id="#ticket" href="custMovie.html">Ticket Management</a>
+        <a class="#order" href="custOrder.html">Order Management</a>
+        <a class="#redeem" href="custRedeem.html">Redeem Rewards</a>
+    </nav>
+
+    <div class="icons">
+        <i class="fas fa-bars" id="menu-bars"></i>
+        <i class="fas fa-search" id="search-icon"></i> 
+        <a href="../logout.html" class="bx bx-lock-open"></a> <!--logout button-->
+    </div>
+</header>
+
+<!-- header section ends -->
+
+<!-- search form start -->
+<form action="" id="search-form">
+    <input type="search" placeholder="Search here..." name="" id="search-box">
+    <label for="search-box" class="fas fa-search"></label>
+    <i class="fas fa-times" id="close"></i>
+</form>
+
+<!-- search form ends  -->
+
+<!-- review and comments section starts -->
+
+<div class="wrapper">
+	<form>
+        <div class="inputBox">
+        
+        <!-- 
+            <div class="input">
+                <span>Your Account ID</span>
+                <input name="accID" id="accID" type="text" placeholder="Enter Your AccID">
+            </div>
+ 		-->
+ 		
+            <div class="input">
+                <label> Select a movie:</label>
+                <select id="movieID" name="movieID">
+                    <option value="A001">Guardians of the Galaxy Vol.3</option>
+                    <option value="A002">Vikram</option>
+                    <option value="A003">Avatar: The Way of Water</option>
+                    <option value="A004">The Wandering Earth</option>
+                    <option value="A005">Sword Art Online the Movie: Progressive - Scherzo of Deep Night</option>
+                    <option value="A006">The House of No Man</option>
+                    <option value="A007">The Super Mario Bros. Movie</option>
+                    <option value="A008">Ant-Man and the Wasp: Quantumania</option>
+                </select>
+            </div>
+        </div>
+    <h3>Give Us Your Comments and Ratings About This Movie</h3>
+    
+        <div class="rating">
+            <input type="radio" name="rating" id="rating" value="0" hidden>
+            <label><input type="radio" name="rating" id="rating" value="1">1</label>
+            <label><input type="radio" name="rating" id="rating" value="2">2</label>
+            <label><input type="radio" name="rating" id="rating" value="3">3</label>
+            <label><input type="radio" name="rating" id="rating" value="4">4</label>
+            <label><input type="radio" name="rating" id="rating" value="5">5</label>
+        </div>
+        <textarea id ="review_opinion" name="opinion" cols="30" rows="5" placeholder="Your opinion..."></textarea>
+        <div class="btn-group">
+			<button type="button" class="btn" onclick="submitReview()">Submit</button>
+            <a class="btn" href="custHome.html">Cancel</a>
+        </div>
+    </form>
+</div>
+
+<!-- review and comments section ends -->
+<!-- js file link -->
+<script src="custReview.js"></script>
+
+</body>
+</html>
